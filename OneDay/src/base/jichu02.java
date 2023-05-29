@@ -1,3 +1,5 @@
+package base;
+
 public class jichu02 {
     public static void main(String[] args) {
         //基本数据类型
