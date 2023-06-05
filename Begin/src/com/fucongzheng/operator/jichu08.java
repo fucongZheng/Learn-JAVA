@@ -1,4 +1,4 @@
-package operator;
+package com.fucongzheng.operator;
 
 public class jichu08 {
     public static void main(String[] args) {

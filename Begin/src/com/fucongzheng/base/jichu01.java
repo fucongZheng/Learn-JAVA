@@ -1,4 +1,4 @@
-package base;
+package com.fucongzheng.base;
 
 public class jichu01 {
     public static void main(String[] arg){
