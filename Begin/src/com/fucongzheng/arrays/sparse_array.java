@@ -64,14 +64,8 @@ public class sparse_array {
 
         int[][] arr = new int[array[0][0]][array[0][1]];
 
-        for (int i = 0; i < array.length; i++) {
-            if (i==0){
-                continue;
-            }else {
-                arr[array[i][0]][array[i][1]] = array[i][2];
-            }
-
-
+        for (int i = 1; i < array.length; i++) {
+            arr[array[i][0]][array[i][1]] = array[i][2];
         }
         return arr;
     }
