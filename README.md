@@ -21,6 +21,8 @@ errors Java异常
 
 popular java常用API
 
+popularDemo java常用Api 的案例包
+
 frame Java用户界面（GUI）
 
 otherthing JavaDoc Lambda 包机制
