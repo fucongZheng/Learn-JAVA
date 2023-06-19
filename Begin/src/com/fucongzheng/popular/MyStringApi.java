@@ -63,6 +63,6 @@ public class MyStringApi {
         //trim()去除字符串两端的空白字符、
         System.out.println(name.trim());
         // startsWith()和endsWith()检查字符串是否以指定的前缀或后缀开始或结束
-        
+
     }
 }
