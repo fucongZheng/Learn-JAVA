@@ -35,10 +35,38 @@ public class EnumExample {
         // 使用枚举常量
         Day today = Day.MONDAY;
         System.out.println("今天是：" + today);  // 输出结果：今天是：MONDAY
-
+        showEnum(today);
         // 遍历枚举值
         for (Day day : Day.values()) {
             System.out.println(day + " - " + day.getChineseName());
+        }
+    }
+
+    public static void showEnum(Day day){
+        switch (day){
+            case MONDAY:
+                System.out.println(day + " is one");
+                break;
+            case TUESDAY:
+                System.out.println(day + " is two");
+                break;
+            case WEDNESDAY:
+                System.out.println(day + " is three");
+                break;
+            case THURSDAY:
+                System.out.println(day + " is four");
+                break;
+            case FRIDAY:
+                System.out.println(day + " is five");
+                break;
+            case SATURDAY:
+                System.out.println(day + " is six");
+                break;
+            case SUNDAY:
+                System.out.println(day + " is seven");
+                break;
+            default:
+                System.out.println("this week is nice");
         }
     }
 }
