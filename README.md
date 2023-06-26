@@ -11,7 +11,7 @@ chooce 条件控制
 
 method Java方法
 
-arrays 数组
+arrays 数组  自定义比较器  自定义排序
 
 oop java对象
 
@@ -25,8 +25,11 @@ popularDemo java常用Api 的案例包
 
 frame Java用户界面（GUI）
 
-otherthing JavaDoc Lambda 包机制
+otherthing JavaDoc Lambda 包机制  方法引用 构造器引用
 
+algorithm 排序
+
+regular-expression  正则表达式
 
 学习Java的路线可以根据个人的经验和需求有所不同，但是以下是一个常见的Java学习路线的详细讲解：
 
