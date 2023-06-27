@@ -31,6 +31,8 @@ algorithm 排序
 
 regular-expression  正则表达式
 
+collection 集合 父接口
+
 学习Java的路线可以根据个人的经验和需求有所不同，但是以下是一个常见的Java学习路线的详细讲解：
 
 学习基本概念和语法：
@@ -77,4 +79,4 @@ Web开发技术和框架：
 积累经验并不断提升自己的编程能力，通过阅读源代码和参与开源项目来进一步拓展知识。
 此外，建议使用一个集成开发环境（IDE）来编写、调试和运行Java代码，
 
-
+官方文档链接：https://docs.oracle.com/javase/8/docs/api/
