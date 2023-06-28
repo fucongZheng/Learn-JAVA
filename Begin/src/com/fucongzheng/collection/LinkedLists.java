@@ -46,5 +46,12 @@ public class LinkedLists {
         queue.offer("banana");
         String headElement = queue.poll();  // "apple", queue = ["banana"]
         String peekedElement = queue.peek();  // "banana", queue = ["banana"]
+
+        //栈 后进先出
+        LinkedList<String> stack = new LinkedList<>();
+        stack.push("apple");
+        stack.push("banana");
+        stack.pop();
+        System.out.println(stack);
     }
 }

@@ -31,6 +31,7 @@ public class Collections01 {
         collection.add("apple");
         boolean contains = collection.contains("apple");
 
+
         Collection<String> otherCollections = new ArrayList<>();
         otherCollections.add("banana");
         otherCollections.add("orange");
