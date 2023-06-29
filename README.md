@@ -37,6 +37,8 @@ map  键值对的映射
 
 io 数据流  序列化流程 文件流程  http://commons.apache.org/proper/commons-io/
 
+specialfile  property属性文件 xml文件
+
 学习Java的路线可以根据个人的经验和需求有所不同，但是以下是一个常见的Java学习路线的详细讲解：
 
 学习基本概念和语法：
