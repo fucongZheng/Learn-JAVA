@@ -33,6 +33,8 @@ regular-expression  正则表达式
 
 collection 集合 父接口
 
+map  键值对的映射
+
 学习Java的路线可以根据个人的经验和需求有所不同，但是以下是一个常见的Java学习路线的详细讲解：
 
 学习基本概念和语法：

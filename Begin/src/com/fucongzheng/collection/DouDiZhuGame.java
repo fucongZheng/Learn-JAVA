@@ -56,8 +56,8 @@ public class DouDiZhuGame {
                 deck.add(new Card(s, r));
             }
         }
-        deck.add(new Card("Joker", "♥"));
-        deck.add(new Card("Joker", "♠"));
+        deck.add(new Card("♥", "Joker"));
+        deck.add(new Card("♠", "Joker"));
     }
 
     public void shuffleDeck() {
