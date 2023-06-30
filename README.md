@@ -35,6 +35,10 @@ collection 集合 父接口
 
 map  键值对的映射
 
+communication 通信 TCP  UDP
+
+junit  Java测试
+
 io 数据流  序列化流程 文件流程  http://commons.apache.org/proper/commons-io/
 
 specialfile  property属性文件 xml文件
