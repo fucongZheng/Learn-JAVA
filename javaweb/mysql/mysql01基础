@@ -1,0 +1,120 @@
+Mysql 数据库
+services.msc 进入电脑的服务
+
+启动与停止 CMD页面
+net start MySQL80
+
+net stop MySQL80
+
+
+客户端链接
+MySQL [-h 127.0.0.1] [-p3306] -u root -p 123456
+
+配置环境变量
+path 增加MySQL环境变量
+
+
+Sql分类
+DDL  数据定义语言 用来定义数据库对象
+     查询
+     SHOW DATABASES
+     SELECT DATABASE()
+
+     创建
+     CREATE DATABASE [IF NOT EXISTS] 数据库名 [DEFAULT CHARSET 字符集] [COLLATE排序规则]
+
+     删除
+     DROP DATABASE [IF EXISTS]数据库名
+
+     使用
+     USE 数据库名
+        查看当前数据库所有表
+        SHOW TABLES
+        DESC 表名
+        SHOW CREATE TABLE 表名  -> ENGINE=InnoDB
+
+        创建
+        CREATE TABLE 表名（
+            字段1 字段类型[COMMENT 字段注释],
+            字段1 字段类型[COMMENT 字段注释],
+            字段1 字段类型[COMMENT 字段注释],
+            字段1 字段类型[COMMENT 字段注释]
+        ）[COMMENT 表注释];
+
+     DDL-操作表-数据类型
+     1、数值类型   age TINYINT  UNSIGNED
+        类型            大小      有符号signed范围    无符号unsigned范围   描述
+        TINYINT        1byte     -128,127           0,255             小整数值
+        SMALLINT       2byte                                          大整数值
+        MEDIUMINT      3byte                                        大整数值
+        INT INTEGER    4byte                                        大整数值
+        BIGINT         8byte                                        极大整数值
+        FLOAT          4byte                                        浮点数
+        DOUBLE         8byte                                        双精度浮点数
+        DECIMAL
+     2、字符串类型
+        类型           大小                 描述
+        CHAR         0-255                定长
+        VARCHAR                            变长
+        TINYBLOB
+        BLOB
+        TEXT
+        MEDIUMBLOB
+        MEDIUMTEXT
+        LONGBLOB
+        LONGTEXT
+     3、日期时间类型
+        类型           大小             范围             格式           描述
+        DATE            3             1000-9999      YYY-MM-DD      日期值
+        TIME            3                            HH:MM:SS       时间
+        YEAR
+        DATETIME
+        TIMESTAMP
+     DDL-表操作-修改表
+     添加字段
+     ALTER TABLE 表名 ADD 字段名 类型(长度) [comment 注释] [约束];
+     修改数据类型
+     ALTER TABLE 表名 MODIFY 字段名 新数据类型(长度);
+     修改字段名和字段类型
+     ALTER TABLE 表名 CHANGE 旧字段名  新字段名  类型(长度) [COMMENT 注释] [约束]
+     删除字段
+     ALTER TABLE 表名 DROP 字段名
+
+
+DML  数据操作语言 用来对数据库【表】的数据进行增删改
+     添加数据 INSERT
+        insert into 表名(字段名) values(值)
+        insert into 表名 values(值1,值2)
+        批量
+        insert into 表名(字段名) values(值1，值2)，(值1,值2)
+        insert into 表名 values(值1,值2),(值1,值2)
+     修改数据 UPDATE
+        UPDATE 表名 SET 字段名=值  [where 条件];
+     删除数据 DELETE
+     DELETE FROM 表名 [where 条件];
+
+DQL  数据查询语言 用来查询数据库中表的记录
+    聚合函数 count max min AVG sum
+    SELECT
+        字段列表
+    FROM
+        表名
+    WHERE
+        条件列表
+    GROUP BY
+        分组字段列表
+    HAVING
+        分组后条件列表
+    ORDER BY
+        排序字段列表
+    LIMIT
+        分页参数
+
+    基本查询
+        select 字段1，字段2 FROM 表名
+
+        select 字段1 AS 别名 FROM 表名
+
+        select distinct 字段列表  FROM 表名
+
+DCL  数据控制语言用来创建数据用户、控制数据库的访问权限
