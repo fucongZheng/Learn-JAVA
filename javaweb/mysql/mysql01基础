@@ -116,5 +116,76 @@ DQL  数据查询语言 用来查询数据库中表的记录
         select 字段1 AS 别名 FROM 表名
 
         select distinct 字段列表  FROM 表名
+    条件查询  SELECT 字段列  FROM 表名 where 条件列表
+        条件
+            >   大于
+            >=  大于等于
+            <=  小于等于
+            =   等于
+            <   小于
+            <> !=   不等于
+            between and  在什么之间
+            in()
+            like 占位符 模糊匹配 _匹配单个   %匹配任意字符
+            is null  是不是空
+            and &&
+            or ||
+            not
+            !
+    聚合函数
+    count  max min avg sum
+        select 聚合函数(字段) from 表名
+
+    分组查询
+    group by
+        select 字段列  from 表名 where 条件 group by 分组字段  having 分组后过滤条件；
+
+    排序查询
+    select 字段 from 表名  order by 字段  排序desc降序  asc升序
+
+    分页查询
+    select 字段 from 表名 limit 起始索引，查询记录数;
+
+        起始索引从0开始，起始索引 =(查询页面 - 1 ) * 每页显示记录数。
+        分页查询是数据库的方言，不同的数据库有不同的实现 MySQL是LIMIT
+        如果查询的是第一时，起始索引可以省略 直接写，limit10；
+    注意！！！！！！DQL的执行顺序
+    from -> where -> Group by ->  having -> select  -> order by -> limit
+
+
 
 DCL  数据控制语言用来创建数据用户、控制数据库的访问权限
+
+    管理用户
+        查询用户
+        use MySQL
+        select * from user
+
+        创建用户
+        create user '用户名'@'主机名'   IDENTIFIED BY '密码'
+
+        修改用户密码
+        ALTER USER '用户名'@'主机名' IDENTIFIED WITH MySQL_native_password by '新密码'
+
+        删除用户
+        DROP USER '用户名'@'主机名'
+
+       DCL-权限控制
+        权限                   说明
+        ALL ALL PRIVILEGES    所有权限
+        select
+        insert
+        update
+        delete
+        alter
+        drop
+        create
+
+        查询权限
+        show grants for  '用户名'@'主机名'
+
+        授予权限
+        grant  权限列表 on 数据库名.表名  to  '用户名'@'主机名'
+
+        撤销权限
+        revoke  权限列表 on 数据库名.表名 from '用户名'@'主机名'
