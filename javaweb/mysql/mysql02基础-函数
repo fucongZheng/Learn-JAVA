@@ -1,0 +1,45 @@
+函数
+字符串函数
+    concat(s1,s2,sn)  字符串拼接成一个字符串
+    lower
+    upper
+    lpad
+    rpad
+    trim
+    substring
+    LENGTH（计算字符串长度）
+数值函数
+    ABS（绝对值）
+    ROUND（四舍五入）
+    CEILING（向上取整）
+    FLOOR（向下取整）
+    MOD(X,Y)
+    RAND()
+    ROUND(X,Y)
+    CEIL
+日期函数
+    NOW（当前日期和时间）
+    DATE（从日期时间中提取日期部分）
+    YEAR（从日期中提取年份）
+    DAY()
+    MONTH()
+    DATEDIFF()
+    CURDATE()
+    CURTIME()
+流程函数
+    IF（条件判断）
+    CASE（多重条件判断）
+    COALESCE（返回第一个非空值）
+    SELECT column1, column2,
+        CASE
+            WHEN condition1 THEN result1
+            WHEN condition2 THEN result2
+            ELSE result3
+        END AS new_column
+    FROM table_name;
+    ifnull()
+系统函数
+    用于获取系统相关信息，
+    USER（当前用户）
+    DATABASE（当前数据库）
+    VERSION（数据库版本）等。
