@@ -1,0 +1,95 @@
+数据库约束是用于强制执行数据完整性和业务规则的规范，确保数据库中的数据符合预定义的条件和要求。以下是常见的数据库约束类型：
+
+    主键约束（Primary Key Constraint）：主键是用来唯一标识表中每一行数据的列或列组合。主键约束要求主键值在表中是唯一且非空的。它可以确保数据的唯一性，并提供了快速访问和关联其他表的能力。
+
+    唯一约束（Unique Constraint）：唯一约束要求列或列组合的值在表中是唯一的，但可以为空值。通过唯一约束可以防止重复数据的插入，但允许空值存在。
+
+    外键约束（Foreign Key Constraint）：外键约束用于建立表与表之间的关系。它要求一个表的列值在另一个表的主键或唯一键中存在。外键约束可以维护数据之间的引用完整性，实现表之间的关联和级联操作。
+
+    非空约束（Not Null Constraint）：非空约束要求列中的值不能为空，即不能存储空值。它确保数据的完整性，避免出现缺失或无效的数据。
+
+    检查约束（Check Constraint）：检查约束允许定义一定的条件或表达式来限制列中的值。只有满足条件的数据才能插入或更新到表中。检查约束可以用于验证业务规则，限制列值的范围或格式。
+
+    默认值约束（Default Constraint）：默认值约束允许在插入新行时为列提供默认值。如果未指定值，则将使用默认值进行填充。
+
+通过使用这些约束，数据库可以强制执行数据的完整性、一致性和有效性。约束还可以提供一定的安全性，防止不正确或非法的数据操作。在设计数据库时，选择适当的约束类型，并为每个表定义合适的约束是良好的数据库实践之一。
+
+-- 创建表
+CREATE TABLE Customers (
+  id INT PRIMARY KEY,
+  name VARCHAR(50) NOT NULL,
+  email VARCHAR(50) UNIQUE,
+  age INT,
+  city VARCHAR(50),
+  CONSTRAINT CHK_Age CHECK (age >= 18)
+);
+
+-- 添加外键约束
+ALTER TABLE Orders
+ADD CONSTRAINT FK_CustomerID
+FOREIGN KEY (customer_id)
+REFERENCES Customers(id);
+
+-- 添加默认值约束
+ALTER TABLE Products
+ALTER COLUMN price SET DEFAULT 0;
+
+-- 添加检查约束
+ALTER TABLE Employees
+ADD CONSTRAINT CHK_Salary CHECK (salary >= 2000);
+
+
+-- 创建父表
+CREATE TABLE Customers (
+  id INT PRIMARY KEY,
+  name VARCHAR(50)
+);
+
+-- 创建子表，并添加外键约束
+CREATE TABLE Orders (
+  order_id INT PRIMARY KEY,
+  customer_id INT,
+  order_date DATE,
+  FOREIGN KEY (customer_id) REFERENCES Customers(id)
+);在创建子表时，使用FOREIGN KEY关键字来添加外键约束。FOREIGN KEY(customer_id)指定了customer_id列作为外键，并通过REFERENCES关键字指定了它引用的父表和列（Customers表的id列）。
+
+---------------------------------------------------
+在外键约束中，可以定义在父表数据删除或更新时子表的行为。以下是关于不同的删除和更新行为选项的详细解释：
+
+ON DELETE CASCADE（级联删除）：
+
+当从父表中删除一条记录时，与之相关的子表记录也会被自动删除。
+这意味着如果父表中某个记录被删除，那么具有对应外键值的子表记录也会被一并删除。
+级联删除可以确保数据的完整性，并避免出现孤立的子表记录。
+ON DELETE SET NULL（设置为空）：
+
+当从父表中删除一条记录时，与之相关的子表记录的外键值将被设置为空（NULL）。
+这意味着如果父表中某个记录被删除，具有对应外键值的子表记录的外键值将被置为空。
+设置为空可以保持子表记录的存在，但与父表的关联关系将丢失。
+ON DELETE SET DEFAULT（设置默认值）：
+
+当从父表中删除一条记录时，与之相关的子表记录的外键值将被设置为默认值。
+默认值必须是预先定义好的一个值或者由默认值约束指定的默认值。
+设置默认值可以保持子表记录的存在，并使用指定的默认值来替代被删除的父表记录。
+ON DELETE RESTRICT（限制删除）：
+
+当尝试从父表中删除一条记录时，如果在子表中存在与之相关的记录，则删除操作将被阻止。
+限制删除会强制要求在删除父表记录之前先删除或解除与之关联的子表记录。
+ON UPDATE CASCADE（级联更新）：
+
+当父表记录的主键值发生更新时，与之相关的子表记录的外键值也会自动更新。
+这意味着子表记录的外键值将与更新后的父表记录的主键值保持一致。
+级联更新可确保子表记录与父表记录的关联关系始终保持有效。
+ON UPDATE SET NULL（设置为空）：
+
+当父表记录的主键值发生更新时，与之相关的子表记录的外键值将被设置为空（NULL）。
+这意味着子表记录的外键值将失去与更新后的父表记录的关联关系。
+这些选项可以根据实际需求来选择和定义。选择适当的删除和更新行为可以确保数据的完整性和一致性，并处理好父表和子表之间的关联关系变化。具体的选项可根据所使用的数据库管理系统及其支持的语法而有所不同，因此请参考相应的文档以获取更详细的信息。
+外键约束删除更新行为
+NO ACTION
+RESTRICT
+CASCADE
+SET NULL
+SET DEFAULT
+
+alter table 表名 add constraint 外键名字 foreign key   REFERENCES 主表名字  on update cascade on delete cascade
