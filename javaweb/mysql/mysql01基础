@@ -5,7 +5,7 @@ services.msc 进入电脑的服务
 net start MySQL80
 
 net stop MySQL80
-
+ exit
 
 客户端链接
 MySQL [-h 127.0.0.1] [-p3306] -u root -p 123456

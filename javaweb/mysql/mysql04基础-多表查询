@@ -1,0 +1,82 @@
+在MySQL中，多表查询是指在单个查询中涉及多个表的操作。以下是几种常见的多表查询方法的详细解释：
+
+内连接（INNER JOIN）：
+
+内连接返回两个或多个表之间满足连接条件的匹配行。
+使用INNER JOIN关键字来连接表，并使用ON子句指定连接条件。
+示例：SELECT * FROM table1 INNER JOIN table2 ON table1.column = table2.column;
+左连接（LEFT JOIN）：
+
+左连接返回左表中的所有行以及与右表满足连接条件的匹配行。
+使用LEFT JOIN关键字来连接表，并使用ON子句指定连接条件。
+示例：SELECT * FROM table1 LEFT JOIN table2 ON table1.column = table2.column;
+右连接（RIGHT JOIN）：
+
+右连接返回右表中的所有行以及与左表满足连接条件的匹配行。
+使用RIGHT JOIN关键字来连接表，并使用ON子句指定连接条件。
+示例：SELECT * FROM table1 RIGHT JOIN table2 ON table1.column = table2.column;
+全连接（FULL JOIN）：
+
+全连接返回两个表中的所有行，并根据连接条件进行匹配。
+使用FULL JOIN关键字来连接表，并使用ON子句指定连接条件。
+MySQL不直接支持FULL JOIN，但可以通过使用LEFT JOIN和UNION操作符来模拟全连接。
+示例：(SELECT * FROM table1 LEFT JOIN table2 ON table1.column = table2.column) UNION (SELECT * FROM table1 RIGHT JOIN table2 ON table1.column = table2.column);
+自连接（Self Join）：
+
+自连接是一种特殊的多表查询，其中同一个表被视为两个不同的表进行连接操作。
+使用别名来区分同一个表的不同实例，并使用相应的条件进行连接。
+示例：SELECT * FROM employees e1 INNER JOIN employees e2 ON e1.manager_id = e2.employee_id;
+
+除了上述方法外，还可以使用子查询、临时表（如使用CREATE TEMPORARY TABLE语句创建临时表并进行查询操作）等方式进行多表查询。
+
+在进行多表查询时，确保连接条件正确，并根据需要选择合适的连接类型以获取所需的结果。同时，合理使用索引和优化查询语句可以提高多表查询的性能。
+
+
+一对一  在任意一方加入外键，关联另外一方的主键，并且设置外键为唯一的(UNIQUE)
+
+
+一对多  在多的一方建立外键，指向一的一方的主键
+
+多对多
+    中间表
+
+
+
+
+
+
+
+
+
+
+
+----------------------------------------------------------------------------------------
+在MySQL中，临时表是一种临时存储数据的表，它只存在于当前会话或连接的生命周期内。临时表常用于复杂的查询、临时存储中间结果以及处理大量数据等场景。以下是对MySQL临时表查询的详细解释：
+
+创建临时表：
+
+使用CREATE TEMPORARY TABLE语句创建临时表。
+示例：CREATE TEMPORARY TABLE temp_table (column1 datatype, column2 datatype, ...);
+插入数据到临时表：
+
+使用INSERT INTO语句将数据插入临时表。
+示例：INSERT INTO temp_table (column1, column2, ...) VALUES (value1, value2, ...);
+查询临时表：
+
+使用SELECT语句从临时表中检索数据。
+示例：SELECT * FROM temp_table;
+操作临时表：
+
+可以像操作普通表一样对临时表进行各种操作，如更新数据、删除数据、修改表结构等。
+示例：UPDATE temp_table SET column1 = value1 WHERE condition;
+临时表的作用范围：
+
+临时表仅在创建它的数据库连接中可见，对于其他数据库连接不可见。
+当数据库连接关闭或会话结束时，临时表会自动被删除。
+多个连接之间共享临时表：
+
+若要在多个数据库连接之间共享临时表，可以使用CREATE GLOBAL TEMPORARY TABLE语句创建全局临时表。
+全局临时表在所有数据库连接中都是可见的，但只有创建它的连接能够修改或删除它。
+需要注意的是，临时表仅适用于当前会话或连接，并不会持久保存数据。它们主要用于存储临时数据和辅助查询操作，而不是长期存储数据。
+
+在使用临时表时，应当谨慎考虑性能问题，避免过多的临时表创建和频繁的数据操作，以免影响数据库性能和资源消耗。
